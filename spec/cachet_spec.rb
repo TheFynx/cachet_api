@@ -49,22 +49,21 @@ describe CachetClient do
 			end
 		end
 
-		# Test component_status_update
-		describe '#component_status_update' do
+		# Test component_update
+		describe '#component_update' do
 			let (:components) { [mock_components[0]] }
-			let (:containers) { [components[0]['containers'][0]] }
-			let (:component_status_update_response) {
-				cachetclient.component_status_update id,
-				                                       [components[0]['_id']],
+			let (:component_update_response) {
+				cachetclient.component_update id,
+				                                       [components[0]],
 				                                       '#Test updating component',
 				                                       CachetClient::STATUS_OPERATIONAL
 			}
 
 			it 'should update single component and return with "result" equal true with the message' do
 
-				component_status_update_response['status']['error'].should eq 'no'
-				component_status_update_response['status']['message'].should eq 'OK'
-				component_status_update_response['result'].should eq true
+				component_update_response['status']['error'].should eq 'no'
+				component_update_response['status']['message'].should eq 'OK'
+				component_update_response['result'].should eq true
 
 			end
 		end

@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+- rbx-2
+- rbx-2.1.8
+- rbx-2.2.4
+- rbx-2.3.0
+addons:
+    code_climate:
+        repo_token: ddaffc1830a7f175bcca559e29619daee62aa145360e2dfbc9dd8e9ac5ce14fb

@@ -58,7 +58,7 @@ class CachetClient
   end
 
   ##
-  # List all components.
+  # List all Components.
   #
   # @return object
 
@@ -68,7 +68,7 @@ class CachetClient
   end
 
   ##
-  # List specific component by id.
+  # List Component by ID.
   #
   # @param id(int) Numeric component id
   # @return object
@@ -129,7 +129,7 @@ class CachetClient
   end
 
   ##
-  # Delete component by ID.
+  # Delete Component.
   #
   # @param id(int) **Required** Numeric component id
   # @return object
@@ -140,7 +140,7 @@ class CachetClient
   end
 
   ##
-  # List all component groups.
+  # List all Component Groups.
   #
   # @return object
 
@@ -150,7 +150,7 @@ class CachetClient
   end
 
   ##
-  # List specific component group by id.
+  # List Component Group by ID.
   #
   # @param id(int) **Required** Numeric component group id
   # @return object
@@ -207,4 +207,88 @@ class CachetClient
   def component_group_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'components/groups/' + id
+  end
+
+  ##
+  # List all Incidents.
+  #
+  # @return object
+
+  def incident_list
+    request :method  => :get,
+            :url     => @base_url + 'incidents/'
+  end
+
+  ##
+  # List Incident by ID.
+  #
+  # @param id(int) Numeric incident id
+  # @return object
+
+  def incident_list_id(id)
+    request :method  => :get,
+            :url     => @base_url + 'incidents/' + id
+  end
+
+  ##
+  # Create Incident.
+  #
+  # @param name(string) **Required** Incident name
+  # @param message (string) **Required** Description of the incident
+  # @param status(int) **Required** Status of the incident; 1-4
+  # @param visible(int) **Required** value whether the incident public 0/1
+  # @param component_id(int) Component to update. (Required with component_status)
+  # @param component_status(int) The status to update the given component with.
+  # @param notify(boolean) True/False Whether to notify subscribers.
+  # @return object
+
+  def incident_create(name, message, status, visible, component_id, component_status, notify)
+    request :method  => :post,
+            :url     => @base_url + 'incidents/'
+            :payload => {
+              'name'              => name,
+              'message'           => description,
+              'status'            => status,
+              'visible'           => link,
+              'component_id'      => order,
+              'component_status'  => group_id,
+              'notify'            => notify
+            }
+  end
+
+  ##
+  # Update Incident.
+  #
+  # @param name(string) Incident name
+  # @param message (string) Description of the incident
+  # @param status(int) Status of the incident; 1-4
+  # @param visible(int) value whether the incident public 0/1
+  # @param component_id(int) Component to update. (Required with component_status)
+  # @param component_status(int) The status to update the given component with.
+  # @param notify(boolean) True/False Whether to notify subscribers.
+  # @return object
+
+  def incident_create(name, message, status, visible, component_id, component_status, notify)
+    request :method  => :put,
+            :url     => @base_url + 'incidents/' + id
+            :payload => {
+              'name'              => name,
+              'message'           => description,
+              'status'            => status,
+              'visible'           => link,
+              'component_id'      => order,
+              'component_status'  => group_id,
+              'notify'            => notify
+            }
+  end
+
+  ##
+  # Delete Incident.
+  #
+  # @param id(int) **Required** Numeric incident id
+  # @return object
+
+  def incident_delete(id)
+    request :method  => :delete,
+            :url     => @base_url + 'incidents/' + id
   end

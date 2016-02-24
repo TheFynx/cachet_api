@@ -54,7 +54,7 @@ class CachetClient
 
   def ping
     request :method  => :get,
-            :url     => @base_url + '/ping'
+            :url     => @base_url + 'ping'
   end
 
   ##
@@ -64,7 +64,7 @@ class CachetClient
 
   def component_list
     request :method  => :get,
-            :url     => @base_url + 'components/'
+            :url     => @base_url + 'components'
   end
 
   ##
@@ -92,7 +92,7 @@ class CachetClient
 
   def component_create(name, description, status, link, order, group_id, enabled)
     request :method  => :post,
-            :url     => @base_url + 'components/'
+            :url     => @base_url + 'components'
             :payload => {
               'name'        => name,
               'description' => description,
@@ -146,7 +146,7 @@ class CachetClient
 
   def component_group_list
     request :method  => :get,
-            :url     => @base_url + 'components/groups/'
+            :url     => @base_url + 'components/groups'
   end
 
   ##
@@ -170,7 +170,7 @@ class CachetClient
 
   def component_group_create(name, order, collapsed)
     request :method  => :post,
-            :url     => @base_url + 'components/groups/'
+            :url     => @base_url + 'components/groups'
             :payload => {
               'name'        => name,
               'order'       => order,
@@ -189,7 +189,7 @@ class CachetClient
 
   def component_group_update(id, name, order, collapsed)
     request :method  => :put,
-            :url     => @base_url + 'components/groups/'
+            :url     => @base_url + 'components/groups'
             :payload => {
               'id'        => id,
               'name'        => name,
@@ -216,7 +216,7 @@ class CachetClient
 
   def incident_list
     request :method  => :get,
-            :url     => @base_url + 'incidents/'
+            :url     => @base_url + 'incidents'
   end
 
   ##
@@ -244,7 +244,7 @@ class CachetClient
 
   def incident_create(name, message, status, visible, component_id, component_status, notify)
     request :method  => :post,
-            :url     => @base_url + 'incidents/'
+            :url     => @base_url + 'incidents'
             :payload => {
               'name'              => name,
               'message'           => description,
@@ -291,4 +291,103 @@ class CachetClient
   def incident_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'incidents/' + id
+  end
+
+  ##
+  # List all Metrics.
+  #
+  # @return object
+
+  def metric_list
+    request :method  => :get,
+            :url     => @base_url + 'metrics'
+  end
+
+  ##
+  # Create Metric.
+  #
+  # @param name(string) **Required** Metric name
+  # @param suffix(string) **Required** Measurments in
+  # @param description (string) **Required** Description of what the metric is measuring
+  # @param default_value(int) **Required** The default value to use when a point is added
+  # @param display_chart(int) Whether to display the chart on the status page 0/1
+  # @return object
+
+  def metric_create(name, suffix, description, default_value, display_chart)
+    request :method  => :post,
+            :url     => @base_url + 'metrics'
+            :payload => {
+              'name'          => name,
+              'suffix'        => suffix,
+              'description'   => description,
+              'default_value' => default_value,
+              'display_chart' => display_chart
+            }
+  end
+
+  ##
+  # List Metric by ID Without Points.
+  #
+  # @param id(int) Metric id
+  # @return object
+
+  def metric_list_id(id)
+    request :method  => :get,
+            :url     => @base_url + 'metrics/' + id
+  end
+
+  ##
+  # Delete a Metric.
+  #
+  # @param id(int) Metric id
+  # @return object
+
+  def metric_delete(id)
+    request :method  => :delete,
+            :url     => @base_url + 'metrics/' + id
+  end
+
+  ##
+  # List Metric Points.
+  #
+  # @param id(int) Metric id
+  # @return object
+
+  def metric_point_list(id)
+    request :method  => :get,
+            :url     => @base_url + 'metrics/' + id + '/points'
+  end
+
+  ##
+  # Add Metric Point.
+  #
+  # @param id(int) **Required** Metric id
+  # @param value(int) **Required** Value to plot on the metric graph
+  # @param timestamp(string) Unix timestamp of the point was measured
+  # @return object
+
+  def metric_point_add(id, value, timestamp)
+    request :method  => :post,
+            :url     => @base_url + 'metrics/' + id + '/points'
+            :payload => {
+              'id'        => id,
+              'value'     => suffix,
+              'timestamp' => timestamp
+            }
+  end
+
+  ##
+  # Delete Metric Point.
+  #
+  # @param id(int) **Required** Metric id
+  # @param point_id(int) **Required** Metric Point id
+  # @return object
+
+  def metric_point_delete(id, point_id)
+    request :method  => :delete,
+            :url     => @base_url + 'metrics/' + id + '/points/' + point_id
+            :payload => {
+              'id'        => id,
+              'value'     => point_id
+            }
   end

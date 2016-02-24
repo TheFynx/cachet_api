@@ -62,7 +62,7 @@ class CachetClient
   #
   # @return object
 
-  def component_list
+  def components_list
     request :method  => :get,
             :url     => @base_url + 'components'
   end
@@ -73,7 +73,7 @@ class CachetClient
   # @param id(int) Numeric component id
   # @return object
 
-  def component_list_id(id)
+  def components_list_id(id)
     request :method  => :get,
             :url     => @base_url + 'components/' + id
   end
@@ -90,7 +90,7 @@ class CachetClient
   # @param enabled(boolean) True/False to enable/disable component
   # @return object
 
-  def component_create(name, description, status, link, order, group_id, enabled)
+  def components_create(name, description, status, link, order, group_id, enabled)
     request :method  => :post,
             :url     => @base_url + 'components'
             :payload => {
@@ -115,7 +115,7 @@ class CachetClient
   # @param group_id(int) Numeric group id component is within
   # @return object
 
-  def component_update(id, name, status, link, order, group_id)
+  def components_update(id, name, status, link, order, group_id)
     request :method  => :put,
             :url     => @base_url + 'components/' + id
             :payload => {
@@ -134,7 +134,7 @@ class CachetClient
   # @param id(int) **Required** Numeric component id
   # @return object
 
-  def component_delete(id)
+  def components_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'components/' + id
   end
@@ -144,7 +144,7 @@ class CachetClient
   #
   # @return object
 
-  def component_group_list
+  def components_group_list
     request :method  => :get,
             :url     => @base_url + 'components/groups'
   end
@@ -155,7 +155,7 @@ class CachetClient
   # @param id(int) **Required** Numeric component group id
   # @return object
 
-  def component_group_list_id(id)
+  def components_group_list_id(id)
     request :method  => :get,
             :url     => @base_url + 'components/groups/' + id
   end
@@ -168,7 +168,7 @@ class CachetClient
   # @param collapsed(boolean) True/False Whether to collapse the group by default
   # @return object
 
-  def component_group_create(name, order, collapsed)
+  def components_group_create(name, order, collapsed)
     request :method  => :post,
             :url     => @base_url + 'components/groups'
             :payload => {
@@ -187,7 +187,7 @@ class CachetClient
   # @param collapsed(boolean) True/False Whether to collapse the group by default
   # @return object
 
-  def component_group_update(id, name, order, collapsed)
+  def components_group_update(id, name, order, collapsed)
     request :method  => :put,
             :url     => @base_url + 'components/groups'
             :payload => {
@@ -204,7 +204,7 @@ class CachetClient
   # @param id(int) **Required** Numeric component group id
   # @return object
 
-  def component_group_delete(id)
+  def components_group_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'components/groups/' + id
   end
@@ -214,7 +214,7 @@ class CachetClient
   #
   # @return object
 
-  def incident_list
+  def incidents_list
     request :method  => :get,
             :url     => @base_url + 'incidents'
   end
@@ -225,7 +225,7 @@ class CachetClient
   # @param id(int) Numeric incident id
   # @return object
 
-  def incident_list_id(id)
+  def incidents_list_id(id)
     request :method  => :get,
             :url     => @base_url + 'incidents/' + id
   end
@@ -242,7 +242,7 @@ class CachetClient
   # @param notify(boolean) True/False Whether to notify subscribers.
   # @return object
 
-  def incident_create(name, message, status, visible, component_id, component_status, notify)
+  def incidents_create(name, message, status, visible, component_id, component_status, notify)
     request :method  => :post,
             :url     => @base_url + 'incidents'
             :payload => {
@@ -268,7 +268,7 @@ class CachetClient
   # @param notify(boolean) True/False Whether to notify subscribers.
   # @return object
 
-  def incident_create(name, message, status, visible, component_id, component_status, notify)
+  def incidents_create(name, message, status, visible, component_id, component_status, notify)
     request :method  => :put,
             :url     => @base_url + 'incidents/' + id
             :payload => {
@@ -288,7 +288,7 @@ class CachetClient
   # @param id(int) **Required** Numeric incident id
   # @return object
 
-  def incident_delete(id)
+  def incidents_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'incidents/' + id
   end
@@ -298,7 +298,7 @@ class CachetClient
   #
   # @return object
 
-  def metric_list
+  def metrics_list
     request :method  => :get,
             :url     => @base_url + 'metrics'
   end
@@ -313,7 +313,7 @@ class CachetClient
   # @param display_chart(int) Whether to display the chart on the status page 0/1
   # @return object
 
-  def metric_create(name, suffix, description, default_value, display_chart)
+  def metrics_create(name, suffix, description, default_value, display_chart)
     request :method  => :post,
             :url     => @base_url + 'metrics'
             :payload => {
@@ -331,7 +331,7 @@ class CachetClient
   # @param id(int) Metric id
   # @return object
 
-  def metric_list_id(id)
+  def metrics_list_id(id)
     request :method  => :get,
             :url     => @base_url + 'metrics/' + id
   end
@@ -342,7 +342,7 @@ class CachetClient
   # @param id(int) Metric id
   # @return object
 
-  def metric_delete(id)
+  def metrics_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'metrics/' + id
   end
@@ -353,7 +353,7 @@ class CachetClient
   # @param id(int) Metric id
   # @return object
 
-  def metric_point_list(id)
+  def metrics_point_list(id)
     request :method  => :get,
             :url     => @base_url + 'metrics/' + id + '/points'
   end
@@ -366,7 +366,7 @@ class CachetClient
   # @param timestamp(string) Unix timestamp of the point was measured
   # @return object
 
-  def metric_point_add(id, value, timestamp)
+  def metrics_point_add(id, value, timestamp)
     request :method  => :post,
             :url     => @base_url + 'metrics/' + id + '/points'
             :payload => {
@@ -383,7 +383,7 @@ class CachetClient
   # @param point_id(int) **Required** Metric Point id
   # @return object
 
-  def metric_point_delete(id, point_id)
+  def metrics_point_delete(id, point_id)
     request :method  => :delete,
             :url     => @base_url + 'metrics/' + id + '/points/' + point_id
             :payload => {
@@ -391,3 +391,41 @@ class CachetClient
               'value'     => point_id
             }
   end
+
+  ##
+  # List all Subscribers.
+  #
+  # @return object
+
+  def subscribers_list
+    request :method  => :get,
+            :url     => @base_url + 'subscribers'
+  end
+
+  ##
+  # Create Subscriber.
+  #
+  # @param email(string) **Required** Email address to subscribe
+  # @param verify(int) Whether to send verification email 0/1
+  # @return object
+
+  def subscribers_create(email, verify)
+    request :method  => :post,
+            :url     => @base_url + 'subscribers'
+            :payload => {
+              'email'   => email,
+              'verify'  => verify
+            }
+  end
+
+  ##
+  # Delete a Subscriber.
+  #
+  # @param id(int) ID of the subscriber to delete
+  # @return object
+
+  def subscribers_delete(id)
+    request :method  => :delete,
+            :url     => @base_url + 'subscribers/' + id
+  end
+end

@@ -28,11 +28,63 @@ $ gem install cachet_api
 ## Usage
 
 ```ruby
-# Under your profile in Cachet, get your api_key from the API Token section.
-CachetClient = cachetClient.new(api_key)
+# Under your profile in Cachet, get your api_key from the API Token section. Base url is https://demo.cachethq.io/api/v1/ or https://cachet.yourdomain.com/api/v1/
+CachetClient = CachetClient.new(api_key, base_url)
 ```
 
 View the last release API documentation at: [https://docs.cachethq.io/](https://docs.cachethq.io/)
+
+## Library to API Quick Reference
+### Ping
+
+Cachet API | Ruby Library
+:--------- | :----------------
+get/ping   | CachetClient.ping
+
+### Components
+
+Cachet API                   | Ruby Library
+:--------------------------- | :-------------------------------------
+get/components               | CachetClient.components_list
+get/components/:id           | CachetClient.components_list_id
+post/components              | CachetClient.components_create
+put/components/:id           | CachetClient.components_update
+delete/components/:id        | CachetClient.components_delete
+get/components/groups        | CachetClient.components_groups_list
+get/components/groups/:id    | CachetClient.components_groups_list_id
+post/components/groups       | CachetClient.components_groups_create
+put/components/groups/:id    | CachetClient.components_groups_update
+delete/components/groups/:id | CachetClient.components_groups_delete
+
+### Incidents
+
+Cachet API           | Ruby Library
+:------------------- | :-----------------------------
+get/incidents        | CachetClient.incidents_list
+get/incidents/:id    | CachetClient.incidents_list_id
+post/incidents       | CachetClient.incidents_create
+put/incidents/:id    | CachetClient.incidents_update
+delete/incidents/:id | CachetClient.incidents_delete
+
+### Metrics
+
+Cachet API                          | Ruby Library
+:---------------------------------- | :--------------------------------
+get/metrics                         | CachetClient.metrics_list
+post/metrics                        | CachetClient.metrics_create
+get/metrics/:id                     | CachetClient.metrics_list_id
+delete/metrics/:id                  | CachetClient.metrics_delete
+get/metrics/:id/points              | CachetClient.metrics_point_list
+post/metrics/:id/points             | CachetClient.metrics_point_add
+delete/metrics/:id/points/:point_id | CachetClient.metrics_point_delete
+
+### Subscribers
+
+Cachet API             | Ruby Library
+:--------------------- | :------------------------------
+get/subscribers        | CachetClient.subscribers_list
+post/subscribers       | CachetClient.subscribers_create
+delete/subscribers/:id | CachetClient.subscribers_delete
 
 ## Development
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -144,7 +144,7 @@ class CachetClient
   #
   # @return object
 
-  def components_group_list
+  def components_groups_list
     request :method  => :get,
             :url     => @base_url + 'components/groups'
   end
@@ -155,7 +155,7 @@ class CachetClient
   # @param id(int) **Required** Numeric component group id
   # @return object
 
-  def components_group_list_id(id)
+  def components_groups_list_id(id)
     request :method  => :get,
             :url     => @base_url + 'components/groups/' + id
   end
@@ -168,7 +168,7 @@ class CachetClient
   # @param collapsed(boolean) True/False Whether to collapse the group by default
   # @return object
 
-  def components_group_create(name, order, collapsed)
+  def components_groups_create(name, order, collapsed)
     request :method  => :post,
             :url     => @base_url + 'components/groups'
             :payload => {
@@ -187,7 +187,7 @@ class CachetClient
   # @param collapsed(boolean) True/False Whether to collapse the group by default
   # @return object
 
-  def components_group_update(id, name, order, collapsed)
+  def components_groups_update(id, name, order, collapsed)
     request :method  => :put,
             :url     => @base_url + 'components/groups'
             :payload => {
@@ -204,7 +204,7 @@ class CachetClient
   # @param id(int) **Required** Numeric component group id
   # @return object
 
-  def components_group_delete(id)
+  def components_groups_delete(id)
     request :method  => :delete,
             :url     => @base_url + 'components/groups/' + id
   end
@@ -268,7 +268,7 @@ class CachetClient
   # @param notify(boolean) True/False Whether to notify subscribers.
   # @return object
 
-  def incidents_create(name, message, status, visible, component_id, component_status, notify)
+  def incidents_update(name, message, status, visible, component_id, component_status, notify)
     request :method  => :put,
             :url     => @base_url + 'incidents/' + id
             :payload => {

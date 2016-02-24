@@ -27,8 +27,8 @@ describe CachetClient do
 
 	#   COMPONENT
 	describe 'Testing components methods' do
-		describe '#component_list' do
-			let (:response) { return cachetclient.component_list }
+		describe '#components_list' do
+			let (:response) { return cachetclient.components_list }
 
 			it 'should not never an error return, the message should be ok' do
 				response.should_not be nil
@@ -49,11 +49,11 @@ describe CachetClient do
 			end
 		end
 
-		# Test component_update
-		describe '#component_update' do
+		# Test components_update
+		describe '#components_update' do
 			let (:components) { [mock_components[0]] }
-			let (:component_update_response) {
-				cachetclient.component_update id,
+			let (:components_update_response) {
+				cachetclient.components_update id,
 				                                       [components[0]],
 				                                       '#Test updating component',
 				                                       CachetClient::STATUS_OPERATIONAL
@@ -61,9 +61,9 @@ describe CachetClient do
 
 			it 'should update single component and return with "result" equal true with the message' do
 
-				component_update_response['status']['error'].should eq 'no'
-				component_update_response['status']['message'].should eq 'OK'
-				component_update_response['result'].should eq true
+				components_update_response['status']['error'].should eq 'no'
+				components_update_response['status']['message'].should eq 'OK'
+				components_update_response['result'].should eq true
 
 			end
 		end

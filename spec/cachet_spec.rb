@@ -15,8 +15,18 @@ describe CachetClient do
 	let (:cachetclient) { CachetClient.new api_key, base_url }
 	let (:mock_components) {
 		[{
-			 'id' => '1',
-			 'status' => '1',
+			  "id" => '1',
+				"name" => "API",
+				"description" => "Used by third-parties to connect to us",
+				"link" => "",
+				"status" => '1',
+				"order" => '0',
+				"group_id" => '0',
+				"created_at" => "2016-02-25 02:30:02",
+				"updated_at" => "2016-02-25 02:30:02",
+				"deleted_at" => 'null',
+				"enabled": => true,
+				"status_name" => "Operational"
 		 }]
 	}
 
@@ -37,7 +47,7 @@ describe CachetClient do
 
 				response['result'].length.should eq mock_components.length
 				response['result'].each_with_index do |component, key|
-					component['containers'].length.should eq mock_components[key]['containers'].length
+					component.length.should eq mock_components[key]['data'].length
 				end
 			end
 
@@ -53,10 +63,9 @@ describe CachetClient do
 		describe '#components_update' do
 			let (:components) { [mock_components[0]] }
 			let (:components_update_response) {
-				cachetclient.components_update id,
-				                                       [components[0]],
-				                                       '#Test updating component',
-				                                       CachetClient::STATUS_OPERATIONAL
+				cachetclient.components_update [components[0]['id']],
+				 															 [components[0]['name']],
+																			 CachetClient::STATUS_OPERATIONAL
 			}
 
 			it 'should update single component and return with "result" equal true with the message' do

@@ -5,7 +5,7 @@ require 'uri'
 require 'json'
 
 ###
-#
+# Basic client to call to make calls into rest-client
 #
 class CachetClient
   class Error < StandardError; end
@@ -21,6 +21,7 @@ class CachetClient
   INCIDENT_WATCHING = 3
   INCIDENT_FIXED = 4
 
+  ##
   # Providing Demo api/url information if none provided
 
   def initialize(api_key, base_url)

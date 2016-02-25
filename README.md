@@ -44,47 +44,47 @@ get/ping   | CachetClient.ping
 ### Components
 
 Cachet API                   | Ruby Library
-:--------------------------- | :-------------------------------------
-get/components               | CachetClient.components_list
-get/components/:id           | CachetClient.components_list_id
-post/components              | CachetClient.components_create
-put/components/:id           | CachetClient.components_update
-delete/components/:id        | CachetClient.components_delete
-get/components/groups        | CachetClient.components_groups_list
-get/components/groups/:id    | CachetClient.components_groups_list_id
-post/components/groups       | CachetClient.components_groups_create
-put/components/groups/:id    | CachetClient.components_groups_update
-delete/components/groups/:id | CachetClient.components_groups_delete
+:--------------------------- | :------------------------------
+get/components               | CachetComponents.list
+get/components/:id           | CachetComponents.list_id
+post/components              | CachetComponents.create
+put/components/:id           | CachetComponents.update
+delete/components/:id        | CachetComponents.delete
+get/components/groups        | CachetComponents.groups_list
+get/components/groups/:id    | CachetComponents.groups_list_id
+post/components/groups       | CachetComponents.groups_create
+put/components/groups/:id    | CachetComponents.groups_update
+delete/components/groups/:id | CachetComponents.groups_delete
 
 ### Incidents
 
 Cachet API           | Ruby Library
-:------------------- | :-----------------------------
-get/incidents        | CachetClient.incidents_list
-get/incidents/:id    | CachetClient.incidents_list_id
-post/incidents       | CachetClient.incidents_create
-put/incidents/:id    | CachetClient.incidents_update
-delete/incidents/:id | CachetClient.incidents_delete
+:------------------- | :----------------------
+get/incidents        | CachetIncidents.list
+get/incidents/:id    | CachetIncidents.list_id
+post/incidents       | CachetIncidents.create
+put/incidents/:id    | CachetIncidents.update
+delete/incidents/:id | CachetIncidents.delete
 
 ### Metrics
 
 Cachet API                          | Ruby Library
-:---------------------------------- | :--------------------------------
-get/metrics                         | CachetClient.metrics_list
-post/metrics                        | CachetClient.metrics_create
-get/metrics/:id                     | CachetClient.metrics_list_id
-delete/metrics/:id                  | CachetClient.metrics_delete
-get/metrics/:id/points              | CachetClient.metrics_point_list
-post/metrics/:id/points             | CachetClient.metrics_point_add
-delete/metrics/:id/points/:point_id | CachetClient.metrics_point_delete
+:---------------------------------- | :-------------------------
+get/metrics                         | CachetMetrics.list
+post/metrics                        | CachetMetrics.create
+get/metrics/:id                     | CachetMetrics.list_id
+delete/metrics/:id                  | CachetMetrics.delete
+get/metrics/:id/points              | CachetMetrics.point_list
+post/metrics/:id/points             | CachetMetrics.point_add
+delete/metrics/:id/points/:point_id | CachetMetrics.point_delete
 
 ### Subscribers
 
 Cachet API             | Ruby Library
-:--------------------- | :------------------------------
-get/subscribers        | CachetClient.subscribers_list
-post/subscribers       | CachetClient.subscribers_create
-delete/subscribers/:id | CachetClient.subscribers_delete
+:--------------------- | :-----------------------
+get/subscribers        | CachetSubscribers.list
+post/subscribers       | CachetSubscribers.create
+delete/subscribers/:id | CachetSubscribers.delete
 
 ## Development
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -25,8 +25,8 @@ describe CachetClient do
 				"created_at" => "2016-02-25 02:30:02",
 				"updated_at" => "2016-02-25 02:30:02",
 				"deleted_at" => 'null',
-				"enabled": => true,
-				"status_name" => "Operational"
+				"enabled": => 'true',
+				"status_name" => "Operational",
 		 }]
 	}
 

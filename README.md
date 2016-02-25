@@ -10,7 +10,7 @@ Ruby library wrapper for [CachetHQ.io](https://cachethq.io)
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cachet_api'
+gem 'cachet_api' (coming soon)
 ```
 
 And then execute:
@@ -29,7 +29,12 @@ $ gem install cachet_api
 
 ```ruby
 # Under your profile in Cachet, get your api_key from the API Token section. Base url is https://demo.cachethq.io/api/v1/ or https://cachet.yourdomain.com/api/v1/
+
 CachetClient = CachetClient.new(api_key, base_url)
+CachetComponents = CachetComponents.new(api_key, base_url)
+CachetIncidents = CachetIncidents.new(api_key, base_url)
+CachetMetrics = CachetMetrics.new(api_key, base_url)
+CachetSubscribers = CachetSubscribers.new(api_key, base_url)
 ```
 
 View the last release API documentation at: [https://docs.cachethq.io/](https://docs.cachethq.io/)

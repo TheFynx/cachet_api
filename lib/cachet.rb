@@ -92,7 +92,7 @@ class CachetClient
 
   def components_create(name, description, status, link, order, group_id, enabled)
     request :method  => :post,
-            :url     => @base_url + 'components'
+            :url     => @base_url + 'components',
             :payload => {
               'name'        => name,
               'description' => description,
@@ -117,7 +117,7 @@ class CachetClient
 
   def components_update(id, name, status, link, order, group_id)
     request :method  => :put,
-            :url     => @base_url + 'components/' + id
+            :url     => @base_url + 'components/' + id,
             :payload => {
               'id'       => id,
               'name'     => name,
@@ -170,7 +170,7 @@ class CachetClient
 
   def components_groups_create(name, order, collapsed)
     request :method  => :post,
-            :url     => @base_url + 'components/groups'
+            :url     => @base_url + 'components/groups',
             :payload => {
               'name'        => name,
               'order'       => order,
@@ -189,7 +189,7 @@ class CachetClient
 
   def components_groups_update(id, name, order, collapsed)
     request :method  => :put,
-            :url     => @base_url + 'components/groups'
+            :url     => @base_url + 'components/groups',
             :payload => {
               'id'        => id,
               'name'        => name,
@@ -244,7 +244,7 @@ class CachetClient
 
   def incidents_create(name, message, status, visible, component_id, component_status, notify)
     request :method  => :post,
-            :url     => @base_url + 'incidents'
+            :url     => @base_url + 'incidents',
             :payload => {
               'name'              => name,
               'message'           => description,
@@ -270,7 +270,7 @@ class CachetClient
 
   def incidents_update(name, message, status, visible, component_id, component_status, notify)
     request :method  => :put,
-            :url     => @base_url + 'incidents/' + id
+            :url     => @base_url + 'incidents/' + id,
             :payload => {
               'name'              => name,
               'message'           => description,
@@ -315,7 +315,7 @@ class CachetClient
 
   def metrics_create(name, suffix, description, default_value, display_chart)
     request :method  => :post,
-            :url     => @base_url + 'metrics'
+            :url     => @base_url + 'metrics',
             :payload => {
               'name'          => name,
               'suffix'        => suffix,
@@ -368,7 +368,7 @@ class CachetClient
 
   def metrics_point_add(id, value, timestamp)
     request :method  => :post,
-            :url     => @base_url + 'metrics/' + id + '/points'
+            :url     => @base_url + 'metrics/' + id + '/points',
             :payload => {
               'id'        => id,
               'value'     => suffix,
@@ -385,7 +385,7 @@ class CachetClient
 
   def metrics_point_delete(id, point_id)
     request :method  => :delete,
-            :url     => @base_url + 'metrics/' + id + '/points/' + point_id
+            :url     => @base_url + 'metrics/' + id + '/points/' + point_id,
             :payload => {
               'id'        => id,
               'value'     => point_id
@@ -411,7 +411,7 @@ class CachetClient
 
   def subscribers_create(email, verify)
     request :method  => :post,
-            :url     => @base_url + 'subscribers'
+            :url     => @base_url + 'subscribers',
             :payload => {
               'email'   => email,
               'verify'  => verify

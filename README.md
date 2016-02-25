@@ -2,7 +2,7 @@
 ## This is under development and not functional
 Ruby library wrapper for CachetHQ.io
 
-[![Travis CI](https://travis-ci.org/TheFynx/cachet_api.svg)](https://travis-ci.org/TheFynx/cachet_api) [![Code Climate](https://codeclimate.com/github/TheFynx/cachet_api/badges/gpa.svg)](https://codeclimate.com/github/TheFynx/cachet_api) [![Test Coverage](https://codeclimate.com/github/TheFynx/cachet_api/badges/coverage.svg)](https://codeclimate.com/github/TheFynx/cachet_api/coverage) [![Issue Count](https://codeclimate.com/github/TheFynx/cachet_api/badges/issue_count.svg)](https://codeclimate.com/github/TheFynx/cachet_api)
+[![Travis CI](https://travis-ci.org/TheFynx/cachet_api.svg)](https://travis-ci.org/TheFynx/cachet_api) [![Code Climate](https://codeclimate.com/github/TheFynx/cachet_api/badges/gpa.svg)](https://codeclimate.com/github/TheFynx/cachet_api) [![Test Coverage](https://codeclimate.com/github/TheFynx/cachet_api/badges/coverage.svg)](https://codeclimate.com/github/TheFynx/cachet_api/coverage) [![Issue Count](https://codeclimate.com/github/TheFynx/cachet_api/badges/issue_count.svg)](https://codeclimate.com/github/TheFynx/cachet_api) [![Inline docs](http://inch-ci.org/github/thefynx/cachet_api.svg?branch=master)](http://inch-ci.org/github/thefynx/cachet_api)
 
 Ruby library wrapper for [CachetHQ.io](https://cachethq.io)
 

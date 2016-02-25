@@ -35,7 +35,19 @@ describe CachetClient do
 		cachetclient.should be_an_instance_of CachetClient
 	end
 
-	#   COMPONENT
+	# PING
+
+	describe '#ping' do
+		let (:response) { return cachetclient.ping }
+
+		it 'should return a 200' do
+			response.should_not be nil
+			response['status']['error'].should eq 'no'
+			response['status']['message'].should eq 'OK'
+		end
+	end
+
+	# COMPONENT
 	describe 'Testing components methods' do
 		describe '#components_list' do
 			let (:response) { return cachetclient.components_list }

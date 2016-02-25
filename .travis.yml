@@ -6,6 +6,8 @@ rvm:
 - 2.1.8
 - 2.1.2
 - jruby
+script:
+  - bundle exec rake yard
 addons:
     code_climate:
         repo_token: ddaffc1830a7f175bcca559e29619daee62aa145360e2dfbc9dd8e9ac5ce14fb

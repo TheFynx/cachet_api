@@ -33,8 +33,6 @@ class CachetClient
     }
   end
 
-  private
-
   def request(params)
     response = RestClient::Request.execute(params.merge(headers: @headers))
     body = JSON.parse(response.body)
@@ -47,8 +45,6 @@ class CachetClient
       fail Net::HTTPError, response.inspect
     end
   end
-
-  public
 
   ##
   # Ping.
@@ -78,73 +74,62 @@ class CachetComponents
   ##
   # List Component by ID.
   #
-  # @param id(int) Numeric component id
+  # @option id(int) Numeric component id
   # @return object
+  # id
 
-  def list_id(id)
+  def list_id(options)
     CachetClient.request method:  :get,
-                         url:     @base_url + 'components/' + id
+                         url:     @base_url + 'components/' + options[id]
   end
 
   ##
   # Create Component.
   #
-  # @param name(string) **Required** Component name
-  # @param status(int) **Required** Numeric status of the component; 1-4
-  # @param description (string) Description of the component
-  # @param link(string) A hyperlink to the component
-  # @param order(int) Numeric order of the component
-  # @param group_id(int) Numeric group id component is within
-  # @param enabled(boolean) True/False to enable/disable component
+  # @option name(string) **Required** Component name
+  # @option status(int) **Required** Numeric status of the component; 1-4
+  # @option description(string) Description of the component
+  # @option link(string) A hyperlink to the component
+  # @option order(int) Numeric order of the component
+  # @option group_id(int) Numeric group id component is within
+  # @option enabled(boolean) True/False to enable/disable component
   # @return object
+  # name, status, description, link, order, group_id, enabled
 
-  def create(name, status, description, link, order, group_id, enabled)
+  def create(options)
     CachetClient.request method:  :post,
                          url:     @base_url + 'components',
-                         payload: {
-                           'name'        => name,
-                           'status'      => status,
-                           'description' => description,
-                           'link'        => link,
-                           'order'       => order,
-                           'group_id'    => group_id,
-                           'enabled'     => enabled
-                         }
+                         payload: options
   end
 
   ##
   # Update Component.
   #
-  # @param id(int) **Required** Numeric component id
-  # @param status(int) Numeric status of the component; 1-4
-  # @param name(string) Component name
-  # @param link(string) A hyperlink to the component
-  # @param order(int) Numeric order of the component
-  # @param group_id(int) Numeric group id component is within
+  # @option id(int) **Required** Numeric component id
+  # @option status(int) Numeric status of the component; 1-4
+  # @option name(string) Component name
+  # @option link(string) A hyperlink to the component
+  # @option order(int) Numeric order of the component
+  # @option group_id(int) Numeric group id component is within
   # @return object
+  # id, status, name, link, order, group_id
 
-  def update(id, status, name, link, order, group_id)
+  def update(options)
     CachetClient.request method:  :put,
-                         url:     @base_url + 'components/' + id,
-                         payload: {
-                           'id'       => id,
-                           'status'   => status,
-                           'name'     => name,
-                           'link'     => link,
-                           'order'    => order,
-                           'group_id' => group_id
-                         }
+                         url:     @base_url + 'components/' + options[id],
+                         payload: options
   end
 
   ##
   # Delete Component.
   #
-  # @param id(int) **Required** Numeric component id
+  # @option id(int) **Required** Numeric component id
   # @return object
+  # id
 
-  def delete(id)
+  def delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'components/' + id
+                         url:     @base_url + 'components/' + options[id]
   end
 
   ##
@@ -160,61 +145,56 @@ class CachetComponents
   ##
   # List Component Group by ID.
   #
-  # @param id(int) **Required** Numeric component group id
+  # @option id(int) **Required** Numeric component group id
   # @return object
+  # id
 
-  def groups_list_id(id)
+  def groups_list_id(options)
     CachetClient.request method:  :get,
-                         url:     @base_url + 'components/groups/' + id
+                         url:     @base_url + 'components/groups/' + options[id]
   end
 
   ##
   # Create Component Group.
   #
-  # @param name(string) **Required** Component group name
-  # @param order(int) Numeric order of the component group
-  # @param collapsed(boolean) Whether to collapse the group by default
+  # @option name(string) **Required** Component group name
+  # @option order(int) Numeric order of the component group
+  # @option collapsed(boolean) Whether to collapse the group by default
   # @return object
+  # name, order, collapsed
 
-  def groups_create(name, order, collapsed)
+  def groups_create(options)
     CachetClient.request method:  :post,
                          url:     @base_url + 'components/groups',
-                         payload: {
-                           'name'        => name,
-                           'order'       => order,
-                           'collapsed'   => collapsed
-                         }
+                         payload: options
   end
 
   ##
   # Update Component Group.
   #
-  # @param id(int) **Required** Numeric component group id
-  # @param name(string) Component group name
-  # @param order(int) Numeric order of the component group
-  # @param collapsed(boolean) Whether to collapse the group by default
+  # @option id(int) **Required** Numeric component group id
+  # @option name(string) Component group name
+  # @option order(int) Numeric order of the component group
+  # @option collapsed(boolean) Whether to collapse the group by default
   # @return object
+  # id, name, order, collapsed
 
-  def groups_update(id, name, order, collapsed)
+  def groups_update(options)
     CachetClient.request method:  :put,
                          url:     @base_url + 'components/groups',
-                         payload: {
-                           'id'          => id,
-                           'name'        => name,
-                           'order'       => order,
-                           'collapsed'   => collapsed
-                         }
+                         payload: options
   end
 
   ##
   # Delete Component Group.
   #
-  # @param id(int) **Required** Numeric component group id
+  # @option id(int) **Required** Numeric component group id
   # @return object
+  # id
 
-  def groups_delete(id)
+  def groups_delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'components/groups/' + id
+                         url:     @base_url + 'components/groups/' + options[id]
   end
 end
 
@@ -235,76 +215,63 @@ class CachetIncidents
   ##
   # List Incident by ID.
   #
-  # @param id(int) Numeric incident id
+  # @option id(int) Numeric incident id
   # @return object
+  # id
 
-  def list_id(id)
+  def list_id(options)
     CachetClient.request method:  :get,
-                         url:     @base_url + 'incidents/' + id
+                         url:     @base_url + 'incidents/' + options[id]
   end
 
   ##
   # Create Incident.
   #
-  # @param name(string) **Required** Incident name
-  # @param message (string) **Required** Description of the incident
-  # @param status(int) **Required** Status of the incident; 1-4
-  # @param visible(int) **Required** value whether the incident public 0/1
-  # @param component_id(int)Component to update.(Required with component_status)
-  # @param component_status(int) The status to update the given component with.
-  # @param notify(boolean) True/False Whether to notify subscribers.
+  # @option name(string) **Required** Incident name
+  # @option message(string) **Required** Description of the incident
+  # @option status(int) **Required** Status of the incident; 1-4
+  # @option visible(int) **Required** value whether the incident public 0/1
+  # @option component_id(int)Component to update.(Required with component_status)
+  # @option component_status(int) The status to update the given component with.
+  # @option notify(boolean) True/False Whether to notify subscribers.
   # @return object
+  # name, message, status, visible, component_id, component_status, notify
 
-  def create(name, message, status, visible, component_id, component_status, notify)
+  def create(options)
     CachetClient.request method:  :post,
                          url:     @base_url + 'incidents',
-                         payload: {
-                           'name'              => name,
-                           'message'           => message,
-                           'status'            => status,
-                           'visible'           => visible,
-                           'component_id'      => component_id,
-                           'component_status'  => component_status,
-                           'notify'            => notify
-                         }
+                         payload: options
   end
 
   ##
   # Update Incident.
   #
-  # @param name(string) Incident name
-  # @param message(string) Description of the incident
-  # @param status(int) Status of the incident; 1-4
-  # @param visible(int) value whether the incident public 0/1
-  # @param component_id(int)Component to update.(Required with component_status)
-  # @param component_status(int) The status to update the given component with.
-  # @param notify(boolean) True/False Whether to notify subscribers.
+  # @option name(string) Incident name
+  # @option message(string) Description of the incident
+  # @option status(int) Status of the incident; 1-4
+  # @option visible(int) value whether the incident public 0/1
+  # @option component_id(int)Component to update.(Required with component_status)
+  # @option component_status(int) The status to update the given component with.
+  # @option notify(boolean) True/False Whether to notify subscribers.
   # @return object
+  # id, status, name, message, visible, component_id, component_status, notify
 
-  def update(id, status, name, message, visible, component_id, component_status, notify)
+  def update(options)
     CachetClient.request method:  :put,
-                         url:     @base_url + 'incidents/' + id,
-                         payload: {
-                           'id'                => id,
-                           'status'            => status,
-                           'name'              => name,
-                           'message'           => message,
-                           'visible'           => visible,
-                           'component_id'      => component_id,
-                           'component_status'  => component_status,
-                           'notify'            => notify
-                         }
+                         url:     @base_url + 'incidents/' + options[id],
+                         payload: options
   end
 
   ##
   # Delete Incident.
   #
-  # @param id(int) **Required** Numeric incident id
+  # @option id(int) **Required** Numeric incident id
   # @return object
+  # id
 
-  def delete(id)
+  def delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'incidents/' + id
+                         url:     @base_url + 'incidents/' + options[id]
   end
 end
 
@@ -325,90 +292,83 @@ class CachetMetrics
   ##
   # Create Metric.
   #
-  # @param name(string) **Required** Metric name
-  # @param suffix(string) **Required** Measurments in
-  # @param description (string) **Required** Description of what is measured
-  # @param default_value(int) **Required** The default value for points
-  # @param display_chart(int) Whether to display the chart on the status page
+  # @option name(string) **Required** Metric name
+  # @option suffix(string) **Required** Measurments in
+  # @option description (string) **Required** Description of what is measured
+  # @option default_value(int) **Required** The default value for points
+  # @option display_chart(int) Whether to display the chart on the status page
   # @return object
+  # name, suffix, description, default_value, display_chart
 
-  def create(name, suffix, description, default_value, display_chart)
+  def create(options)
     CachetClient.request method:  :post,
                          url:     @base_url + 'metrics',
-                         payload: {
-                           'name'          => name,
-                           'suffix'        => suffix,
-                           'description'   => description,
-                           'default_value' => default_value,
-                           'display_chart' => display_chart
-                         }
+                         payload: options
   end
 
   ##
   # List Metric by ID Without Points.
   #
-  # @param id(int) Metric id
+  # @option id(int) Metric id
   # @return object
+  # id
 
-  def list_id(id)
+  def list_id(options)
     CachetClient.request method:  :get,
-                         url:     @base_url + 'metrics/' + id
+                         url:     @base_url + 'metrics/' + options[id]
   end
 
   ##
   # Delete a Metric.
   #
-  # @param id(int) Metric id
+  # @option id(int) Metric id
   # @return object
+  # id
 
-  def delete(id)
+  def delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'metrics/' + id
+                         url:     @base_url + 'metrics/' + options[id]
   end
 
   ##
   # List Metric Points.
   #
-  # @param id(int) Metric id
+  # @option id(int) Metric id
   # @return object
+  # id
 
-  def point_list(id)
+  def point_list(options)
     CachetClient.request method:  :get,
-                         url:     @base_url + 'metrics/' + id + '/points'
+                         url:     @base_url + 'metrics/' + options[id] + '/points'
   end
 
   ##
   # Add Metric Point.
   #
-  # @param id(int) **Required** Metric id
-  # @param value(int) **Required** Value to plot on the metric graph
-  # @param timestamp(string) Unix timestamp of the point was measured
+  # @option id(int) **Required** Metric id
+  # @option value(int) **Required** Value to plot on the metric graph
+  # @option timestamp(string) Unix timestamp of the point was measured
   # @return object
+  # id, value, timestamp
 
-  def point_add(id, value, timestamp)
+  def point_add(options)
     CachetClient.request method:  :post,
-                         url:     @base_url + 'metrics/' + id + '/points',
-                         payload: {
-                           'id'        => id,
-                           'value'     => value,
-                           'timestamp' => timestamp
-                         }
+                         url:     @base_url + 'metrics/' + options[id] + '/points',
+                         payload: options
   end
 
   ##
   # Delete Metric Point.
   #
-  # @param id(int) **Required** Metric id
-  # @param point_id(int) **Required** Metric Point id
+  # @option id(int) **Required** Metric id
+  # @option point_id(int) **Required** Metric Point id
   # @return object
+  # id, point_id
 
-  def point_delete(id, point_id)
+  def point_delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'metrics/' + id + '/points/' + point_id,
-                         payload: {
-                           'id'        => id,
-                           'value'     => point_id
-                         }
+                         url:     @base_url + 'metrics/' + options[id] + '/points/' + options[point_id],
+                         payload: options
   end
 end
 
@@ -429,27 +389,26 @@ class CachetSubscribers
   ##
   # Create Subscriber.
   #
-  # @param email(string) **Required** Email address to subscribe
-  # @param verify(int) Whether to send verification email 0/1
+  # @option email(string) **Required** Email address to subscribe
+  # @option verify(int) Whether to send verification email 0/1
   # @return object
+  # email, verify
 
-  def create(email, verify)
+  def create(options)
     CachetClient.request method:  :post,
                          url:     @base_url + 'subscribers',
-                         payload: {
-                           'email'   => email,
-                           'verify'  => verify
-                         }
+                         payload: options
   end
 
   ##
   # Delete a Subscriber.
   #
-  # @param id(int) ID of the subscriber to delete
+  # @option id(int) ID of the subscriber to delete
   # @return object
+  # id
 
-  def delete(id)
+  def delete(options)
     CachetClient.request method:  :delete,
-                         url:     @base_url + 'subscribers/' + id
+                         url:     @base_url + 'subscribers/' + options[id]
   end
 end

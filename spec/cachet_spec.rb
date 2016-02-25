@@ -79,7 +79,7 @@ describe CachetClient do
 
       it 'should update single component and return with "result" equal true with the message' do
         components_update_response.code.should eq 200
-        components_update_response['data']['id'].should eq [components[0]['id']]
+        components_update_response['data']['id'].should eq [options['id']]
       end
     end
   end

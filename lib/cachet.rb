@@ -43,6 +43,9 @@ class CachetClient
 
   ##
   # Providing Demo api/url information if none provided
+  # @param api_key [string] :api_key Your cachet API Token/Key
+  # @param base_url [string] :base_url Your cachet base api url
+  # @return object
 
   def initialize(api_key, base_url)
     @api_key = api_key
@@ -54,14 +57,23 @@ class CachetClient
   end
 
   ##
-  # Posts token, url, headers, and any payloads to rest-client
+  # Posts token, url, headers, and any payloads to rest-client all params are passed by methods
+  # @param api_key [string] :api_key Your cachet API Token/Key
+  # @param url [string] :url Your complete cachet api url, built by methods
+  # @param method [string] :method Get, Post, Put, and Delete
+  # @param payload [hash] :options Set of options provided by the Cachet methods
+  # @param headers [hash] :headers provides by initialize methods
+  # @return object
 
   def request(params)
     response = RestClient::Request.execute(params.merge(headers: @headers))
-    body = JSON.parse(response.body)
+    code = response.code
 
     if response.code == 200
+      body = JSON.parse(response.body)
       return body
+    elsif response.code == 204
+      return code
     else
       fail Net::HTTPError, response.inspect
     end

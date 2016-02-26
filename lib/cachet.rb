@@ -33,6 +33,9 @@ class CachetClient
     }
   end
 
+  ##
+  # Posts token, url, headers, and any payloads to rest-client
+
   def request(params)
     response = RestClient::Request.execute(params.merge(headers: @headers))
     body = JSON.parse(response.body)
@@ -56,7 +59,7 @@ class CachetClient
 end
 
 ###
-#
+# Inherits CachetClient and handles all Components API Calls
 #
 class CachetComponents < CachetClient
   ##
@@ -193,7 +196,7 @@ class CachetComponents < CachetClient
 end
 
 ###
-#
+# Inherits CachetClient and handles all Incidents API Calls
 #
 class CachetIncidents < CachetClient
   ##
@@ -267,7 +270,7 @@ class CachetIncidents < CachetClient
 end
 
 ###
-#
+# Inherits CachetClient and handles all Metrics API Calls
 #
 class CachetMetrics < CachetClient
   ##
@@ -358,7 +361,7 @@ class CachetMetrics < CachetClient
 end
 
 ###
-#
+# Inherits CachetClient and handles all Subscribers API Calls
 #
 class CachetSubscribers < CachetClient
   ##

@@ -47,18 +47,18 @@ describe CachetComponents do
   ## Create mock component to test
   let(:mock_components) do
     {
-        'id'            => '1',
-        'name'          => 'API_test',
-        'description'   => 'Used by cachet_api gem for testing',
-        'link'          => 'http://justtesting.domain.com',
-        'status'        => '1',
-        'order'         => '0',
-        'group_id'      => '0',
-        'created_at'    => '2016-02-25 02:30:02',
-        'updated_at'    => '2016-02-25 02:30:02',
-        'deleted_at'    => 'null',
-        'enabled'       => 'true',
-        'status_name'   => 'Operational'
+      'id'            => '1',
+      'name'          => 'API_test',
+      'description'   => 'Used by cachet_api gem for testing',
+      'link'          => 'http://justtesting.domain.com',
+      'status'        => '1',
+      'order'         => '0',
+      'group_id'      => '0',
+      'created_at'    => '2016-02-25 02:30:02',
+      'updated_at'    => '2016-02-25 02:30:02',
+      'deleted_at'    => 'null',
+      'enabled'       => 'true',
+      'status_name'   => 'Operational'
     }
   end
   ## Test CachetComponents.list
@@ -150,17 +150,17 @@ describe CachetIncidents do
   ## Create mock incident to test
   let(:mock_incidents) do
     {
-        'id'            => 1,
-        'component_id'  => 0,
-        'name'          => 'Awesome',
-        'status'        => 4,
-        'message'       => ':+1: We totally nailed the fix.',
-        'created_at'    => '2016-02-26 14:30:01',
-        'updated_at'    => '2016-02-26 14:30:01',
-        'deleted_at'    => 'null',
-        'scheduled_at'  => '2016-02-26 15:06:31',
-        'visible'       => 1,
-        'human_status'  => 'Fixed'
+      'id'            => 1,
+      'component_id'  => 0,
+      'name'          => 'Awesome',
+      'status'        => 4,
+      'message'       => ':+1: We totally nailed the fix.',
+      'created_at'    => '2016-02-26 14:30:01',
+      'updated_at'    => '2016-02-26 14:30:01',
+      'deleted_at'    => 'null',
+      'scheduled_at'  => '2016-02-26 15:06:31',
+      'visible'       => 1,
+      'human_status'  => 'Fixed'
     }
   end
   ## Test CachetIncidents.list
@@ -194,45 +194,48 @@ describe CachetIncidents do
     end
   end
 
-  # ## Test CachetIncidents.create
-  # describe '#CachetIncidents.create' do
-  #   let(:options) do
-  #     {
-  #       'name'      => mock_incidents['name'],
-  #       'status'    => CachetClient::STATUS_OPERATIONAL,
-  #       'link'      => mock_incidents['link'],
-  #       'order'     => mock_incidents['order'],
-  #       'group_id'  => mock_incidents['group_id'],
-  #       'enabled'   => mock_incidents['enabled']
-  #     }
-  #   end
-  #   let(:components_create_response) { cachetincidents.create options }
-  #
-  #   it 'should create single component and match mock component' do
-  #     components_create_response['data']['name'].should eq mock_incidents['name']
-  #     components_create_response['data']['status'].should eq CachetClient::STATUS_OPERATIONAL
-  #     components_create_response['data']['link'].should eq mock_incidents['link']
-  #     components_create_response['data']['order'].should eq 0
-  #     components_create_response['data']['group_id'].should eq 0
-  #     components_create_response['data']['enabled'].should eq true
-  #   end
-  # end
-  #
-  # ## Test CachetIncidents.update
-  # describe '#CachetIncidents.update' do
-  #   let(:options) do
-  #     {
-  #       'id' => mock_incidents['id'],
-  #       'name' => 'API',
-  #       'status' => CachetClient::STATUS_OPERATIONAL
-  #     }
-  #   end
-  #   let(:components_update_response) { cachetincidents.update options }
-  #
-  #   it 'should update single component and response should match updated component items' do
-  #     components_update_response['data']['id'].should eq 1
-  #     components_update_response['data']['name'].should eq 'API'
-  #     components_update_response['data']['name'].should eq CachetClient::STATUS_OPERATIONAL
-  #   end
-  #end
+  ## Test CachetIncidents.create
+  describe '#CachetIncidents.create' do
+    let(:options) do
+      {
+        'name'              => 'cachet_api Incident Test!',
+        'message'           => 'cachet_api gem testing',
+        'status'            => CachetClient::INCIDENT_INVESTIGATING,
+        'visible'           => mock_incidents['visible'],
+        'component_id'      => mock_incidents['component_id'],
+        'component_status'  => mock_incidents['component_status'],
+        'notify'            => false
+      }
+    end
+    let(:components_create_response) { cachetincidents.create options }
+
+    it 'should create single component and match mock component' do
+      components_create_response['data']['name'].should eq 'cachet_api Incident Test!'
+      components_create_response['data']['message'].should eq 'cachet_api gem testing'
+      components_create_response['data']['status'].should eq CachetClient::INCIDENT_INVESTIGATING
+      components_create_response['data']['visible'].should eq mock_incidents['visible']
+      components_create_response['data']['order'].should eq mock_incidents['order']
+      components_create_response['data']['component_id'].should eq mock_incidents['component_id']
+      components_create_response['data']['component_status'].should eq mock_incidents['component_status']
+      components_create_response['data']['notify'].should eq false
+    end
+  end
+
+  ## Test CachetIncidents.update
+  describe '#CachetIncidents.update' do
+    let(:options) do
+      {
+        'id' => mock_incidents['id'],
+        'name' => mock_incidents['name'],
+        'status' => CachetClient::INCIDENT_WATCHING
+      }
+    end
+    let(:components_update_response) { cachetincidents.update options }
+
+    it 'should update single component and response should match updated component items' do
+      components_update_response['data']['id'].should eq mock_incidents['id']
+      components_update_response['data']['name'].should eq mock_incidents['name']
+      components_update_response['data']['status'].should eq CachetClient::INCIDENT_WATCHING
+    end
+  end
 end

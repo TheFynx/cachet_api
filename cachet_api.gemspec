@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = CachetClient::VERSION
   spec.authors       = ['TheFynx']
   spec.email         = ['levi@fynx.me']
+  spec.required_ruby_version = '>= 2.1'
 
   spec.summary       = 'Ruby library wrapper for Cachet API'
   spec.description   = 'Ruby library wrapper for CachetHQ.io - Beautiful & simple service statuses - The open source status page system, for everyone'

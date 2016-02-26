@@ -58,11 +58,11 @@ class CachetClient
 
   ##
   # Posts token, url, headers, and any payloads to rest-client all params are passed by methods
-  # @param api_key [string] :api_key Your cachet API Token/Key
-  # @param url [string] :url Your complete cachet api url, built by methods
-  # @param method [string] :method Get, Post, Put, and Delete
-  # @param payload [hash] :options Set of options provided by the Cachet methods
-  # @param headers [hash] :headers provides by initialize methods
+  # @param params [string] :api_key Your cachet API Token/Key
+  # @param params [string] :url Your complete cachet api url, built by methods
+  # @param params [string] :method Get, Post, Put, and Delete
+  # @param params [hash] :options Set of options provided by the Cachet methods
+  # @param params [hash] :headers provides by initialize methods
   # @return object
 
   def request(params)

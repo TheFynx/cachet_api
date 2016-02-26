@@ -8,17 +8,37 @@ require 'json'
 # Basic client to call to make calls into rest-client
 #
 class CachetClient
+  ##
+  # class to catch errors
   class Error < StandardError; end
 
+  ##
+  # Constant to utilize for Component Status Operational
   STATUS_OPERATIONAL = 1
+  ##
+  # Constant to utilize for Component Status Peformance Issues
   STATUS_PERFORMANCE_ISSUES = 2
+  ##
+  # Constant to utilize for Component Status Partial Outage
   STATUS_PARTIAL_OUTAGE = 3
+  ##
+  # Constant to utilize for Component Status Major Outage
   STATUS_MAJOR_OUTAGE = 4
 
+  ##
+  # Constant to utilize for Incident Status Scheduled Incident/Maintainence
   INCIDENT_SCHEDULED = 0
+  ##
+  # Constant to utilize for Incident Status Investigating
   INCIDENT_INVESTIGATING = 1
+  ##
+  # Constant to utilize for Incident Status Identified
   INCIDENT_IDENTIFIED = 3
+  ##
+  # Constant to utilize for Incident Status Watching
   INCIDENT_WATCHING = 3
+  ##
+  # Constant to utilize for Incident Status Fixed
   INCIDENT_FIXED = 4
 
   ##

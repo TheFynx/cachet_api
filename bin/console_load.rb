@@ -18,7 +18,7 @@ module IRB
     @CONF[:IRB_RC].call(irb.context) if @CONF[:IRB_RC]
     @CONF[:MAIN_CONTEXT] = irb.context
 
-    trap("SIGINT") do
+    trap('SIGINT') do
       irb.signal_handle
     end
 
@@ -28,13 +28,30 @@ module IRB
   end
 end
 
+api = '9yMHsdioQosnyVK4iCVR'
+base_url = 'https://demo.cachethq.io/api/v1/'
+
 # we want to manipulate this in IRB
-CachetComponents = CachetComponents.new('9yMHsdioQosnyVK4iCVR', 'https://demo.cachethq.io/api/v1/')
-CachetIncidents = CachetIncidents.new('9yMHsdioQosnyVK4iCVR', 'https://demo.cachethq.io/api/v1/')
-CachetMetrics = CachetMetrics.new('9yMHsdioQosnyVK4iCVR', 'https://demo.cachethq.io/api/v1/')
-options = {}
-options['id'] = '1'
-options['name'] = 'API'
-options['status'] = '1'
+CachetClient = CachetClient.new(api, base_url)
+CachetComponents = CachetComponents.new(api, base_url)
+CachetIncidents = CachetIncidents.new(api, base_url)
+CachetMetrics = CachetMetrics.new(api, base_url)
+CachetSubscribers = CachetSubscribers.new(api, base_url)
+
+componentoptions = {}
+componentoptions['id']      = '1'
+componentoptions['name']    = 'API'
+componentoptions['status']  = '1'
+
+incidentoptions = {}
+incidentoptions['id']      = '1'
+incidentoptions['status']  = '1'
+
+metricoptions = {}
+metricoptions['id'] = '1'
+
+subscribecoptions = {}
+subscribecoptions['email']  = 'test@test.com'
+subscribecoptions['verify'] = '0'
 
 IRB.start_session(Kernel.binding)

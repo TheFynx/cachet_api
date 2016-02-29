@@ -19,7 +19,7 @@ end
 
 desc 'Open an irb session preloaded with this library'
 task :console do
-  sh 'irb -rubygems -I lib -r cachet.rb'
+  sh 'ruby -I lib ./bin/console_load.rb'
 end
 
 desc 'Common task'

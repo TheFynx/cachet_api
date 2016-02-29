@@ -50,8 +50,9 @@ incidentoptions['status']  = '1'
 metricoptions = {}
 metricoptions['id'] = '1'
 
-subscribecoptions = {}
-subscribecoptions['email']  = 'test@test.com'
-subscribecoptions['verify'] = '0'
+subscribeoptions = {}
+subscribeoptions['id'] = '1'
+subscribeoptions['email']  = 'test@testing.com'
+subscribeoptions['verify'] = '0'
 
 IRB.start_session(Kernel.binding)

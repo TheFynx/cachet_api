@@ -5,37 +5,31 @@ require 'rspec'
 describe CachetMetrics do
   let(:api_key) { '9yMHsdioQosnyVK4iCVR' }
   let(:base_url) { 'https://demo.cachethq.io/api/v1/' }
-  let(:api_headers) do
-    {
-      'X-Cachet-Token' => '9yMHsdioQosnyVK4iCVR',
-      'Content-Type' => 'application/json'
-    }
-  end
-  ## Create new incident client
-  let(:cachetmetrics) { CachetMetrics.new api_key, base_url }
-  ## Create mock incident to test
-  let(:mock_metrics) do
-    {
-      'id'            => 1,
-      'name'          => 'Cups of coffee',
-      'suffix'        => 'Cups',
-      'description'   => "How many cups of coffee we've drank.",
-      'default_value' => 0,
-      'calc_type'     => 1,
-      'display_chart' => 'true',
-      'created_at'    => '2016-02-29 16:30:01',
-      'updated_at'    => '2016-02-29 16:30:01',
-      'places'        => 2,
-      'default_view'  => 1
-    }
-  end
-  ## Test CachetMetrics.list
-  describe '#CachetMetrics.list' do
-    let(:response) { return cachetmetrics.list }
 
-    it 'should succesfully pull metric list' do
-      response.should_not be nil
-      response['data'][0]['id'].should_not be nil
+  ## Create new componet client
+  let(:cachetmetrics) { CachetMetrics.new api_key, base_url }
+  it 'should success' do
+    api_key.should eq '9yMHsdioQosnyVK4iCVR'
+    cachetmetrics.should be_an_instance_of CachetMetrics
+  end
+  describe 'CachetMetrics' do
+    ## Test CachetMetrics.list
+    let(:metrics_list_response) { return cachetmetrics.list }
+    let(:testmetric) { metrics_list_response['data'][0] }
+    it 'return metric list, assign to variable, and variable should return data' do
+      testmetric.should_not be nil
+      testmetric['id'].should_not be nil
+    end
+
+    ## Test CachetMetrics.list_id
+    let(:options_list) do
+      {
+        'id' => testmetric['id']
+      }
+    end
+    let(:metrics_list_id_response) { cachetmetrics.list_id options_list }
+    it 'should return single metric and match metric pulled earlier' do
+      metrics_list_id_response['data']['id'].should eq testmetric['id']
     end
   end
 end

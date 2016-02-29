@@ -73,7 +73,7 @@ class CachetClient
       body = JSON.parse(response.body)
       return body
     elsif response.code == 204
-      return code
+      return code, 'Content Deleted'
     else
       fail Net::HTTPError, response.inspect
     end
@@ -108,11 +108,10 @@ class CachetComponents < CachetClient
   # List Component by ID.
   # @option options [string] :id Numeric component id
   # @return object
-  # id
 
   def list_id(options)
     request method:  :get,
-            url:     @base_url + 'components/' + options['id']
+            url:     @base_url + 'components/' + options['id'].to_s
   end
 
   ##
@@ -147,7 +146,7 @@ class CachetComponents < CachetClient
 
   def update(options)
     request method:  :put,
-            url:     @base_url + 'components/' + options['id'],
+            url:     @base_url + 'components/' + options['id'].to_s,
             payload: options
   end
 
@@ -159,7 +158,7 @@ class CachetComponents < CachetClient
 
   def delete(options)
     request method:  :delete,
-            url:     @base_url + 'components/' + options['id']
+            url:     @base_url + 'components/' + options['id'].to_s
   end
 
   ##
@@ -180,7 +179,7 @@ class CachetComponents < CachetClient
 
   def groups_list_id(options)
     request method:  :get,
-            url:     @base_url + 'components/groups/' + options['id']
+            url:     @base_url + 'components/groups/' + options['id'].to_s
   end
 
   ##
@@ -219,11 +218,8 @@ class CachetComponents < CachetClient
   # @return object
 
   def groups_delete(options)
-    options['id'].each_pair do |_k, v|
-      options['id'] = v.to_s
-    end
     request method:  :delete,
-            url:     @base_url + 'components/groups/' + options['id']
+            url:     @base_url + 'components/groups/' + options['id'].to_s
   end
 end
 
@@ -249,7 +245,7 @@ class CachetIncidents < CachetClient
 
   def list_id(options)
     request method:  :get,
-            url:     @base_url + 'incidents/' + options['id']
+            url:     @base_url + 'incidents/' + options['id'].to_s
   end
 
   ##
@@ -285,7 +281,7 @@ class CachetIncidents < CachetClient
 
   def update(options)
     request method:  :put,
-            url:     @base_url + 'incidents/' + options['id'],
+            url:     @base_url + 'incidents/' + options['id'].to_s,
             payload: options
   end
 
@@ -297,7 +293,7 @@ class CachetIncidents < CachetClient
 
   def delete(options)
     request method:  :delete,
-            url:     @base_url + 'incidents/' + options['id']
+            url:     @base_url + 'incidents/' + options['id'].to_s
   end
 end
 
@@ -339,7 +335,7 @@ class CachetMetrics < CachetClient
 
   def list_id(options)
     request method:  :get,
-            url:     @base_url + 'metrics/' + options['id']
+            url:     @base_url + 'metrics/' + options['id'].to_s
   end
 
   ##
@@ -350,7 +346,7 @@ class CachetMetrics < CachetClient
 
   def delete(options)
     request method:  :delete,
-            url:     @base_url + 'metrics/' + options['id']
+            url:     @base_url + 'metrics/' + options['id'].to_s
   end
 
   ##
@@ -361,7 +357,7 @@ class CachetMetrics < CachetClient
 
   def point_list(options)
     request method:  :get,
-            url:     @base_url + 'metrics/' + options['id'] + '/points'
+            url:     @base_url + 'metrics/' + options['id'].to_s + '/points'
   end
 
   ##
@@ -374,7 +370,7 @@ class CachetMetrics < CachetClient
 
   def point_add(options)
     request method:  :post,
-            url:     @base_url + 'metrics/' + options['id'] + '/points',
+            url:     @base_url + 'metrics/' + options['id'].to_s + '/points',
             payload: options
   end
 
@@ -387,7 +383,7 @@ class CachetMetrics < CachetClient
 
   def point_delete(options)
     request method:  :delete,
-            url:     @base_url + 'metrics/' + options['id'] + '/points/' + options['point_id'],
+            url:     @base_url + 'metrics/' + options['id'].to_s + '/points/' + options['point_id'],
             payload: options
   end
 end
@@ -427,6 +423,6 @@ class CachetSubscribers < CachetClient
 
   def delete(options)
     request method:  :delete,
-            url:     @base_url + 'subscribers/' + options['id']
+            url:     @base_url + 'subscribers/' + options['id'].to_s
   end
 end

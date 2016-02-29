@@ -19,7 +19,7 @@ end
 
 desc 'Open an irb session preloaded with this library'
 task :console do
-  sh 'ruby -I lib ./bin/console_load.rb'
+  sh 'ruby -I lib ./bin/console.rb'
 end
 
 desc 'Common task'

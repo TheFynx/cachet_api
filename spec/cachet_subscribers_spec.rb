@@ -5,14 +5,13 @@ require 'rspec'
 describe CachetSubscribers do
   let(:api_key) { '9yMHsdioQosnyVK4iCVR' }
   let(:base_url) { 'https://demo.cachethq.io/api/v1/' }
-  let(:api_headers) do
-    {
-      'X-Cachet-Token' => '9yMHsdioQosnyVK4iCVR',
-      'Content-Type' => 'application/json'
-    }
-  end
+
   ## Create new incident client
   let(:cachetsubscribers) { CachetSubscribers.new api_key, base_url }
+  it 'should success' do
+    api_key.should eq '9yMHsdioQosnyVK4iCVR'
+    cachetsubscribers.should be_an_instance_of CachetSubscribers
+  end
   ## Create mock incident to test
   let(:mock_subscribers) do
     {

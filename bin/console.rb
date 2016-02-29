@@ -49,6 +49,11 @@ incidentoptions['status']  = '1'
 
 metricoptions = {}
 metricoptions['id'] = '1'
+#metricoptions['name'] = 'Test'
+#metricoptions['suffix'] = 'ms'
+#metricoptions['description'] = 'Test'
+#metricoptions['default_value'] = '0'
+
 
 subscribeoptions = {}
 subscribeoptions['id'] = '3'

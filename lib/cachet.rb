@@ -383,7 +383,7 @@ class CachetMetrics < CachetClient
 
   def point_delete(options)
     request method:  :delete,
-            url:     @base_url + 'metrics/' + options['id'].to_s + '/points/' + options['point_id'],
+            url:     @base_url + 'metrics/' + options['id'].to_s + '/points/' + options['point_id'].to_s,
             payload: options
   end
 end

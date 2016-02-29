@@ -24,6 +24,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_dependency 'rest-client'
-  spec.add_dependency 'yard'
-  spec.add_dependency 'redcarpet'
 end

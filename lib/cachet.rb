@@ -318,7 +318,7 @@ class CachetMetrics < CachetClient
   # @option options [string] :suffix **Required** Measurments in
   # @option options [string] :description **Required** Description of what is measured
   # @option options [int] :default_value **Required** The default value for points
-  # @option options [int] :display_chart Whether to display the chart on the status page
+  # @option options [int] :display_chart **Required** Whether to display the chart on the status page
   # @return object
 
   def create(options)

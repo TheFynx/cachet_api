@@ -40,18 +40,18 @@ describe CachetComponents do
       components_list_id_response['data']['name'].should eq options_component_create['name']
     end
 
-    # ## Test CachetComponents.groups_create
-    # options_component_groups_create = {}
-    # options_component_groups_create['name'] = 'ComponentGroupTest-' + SecureRandom.hex(5)
-    # options_component_groups_create['order'] = 2
-    # options_component_groups_create['collapsed'] = true
-    # components_groups_create_response = CachetComponents.groups_create(options_component_groups_create)
-    # it 'should return created component group with id' do
-    #   components_groups_create_response.should_not be nil
-    #   components_groups_create_response['data']['id'].should_not be nil
-    #   components_groups_create_response['data']['name'].should eq options_component_groups_create['name']
-    #   components_groups_create_response['data']['collapsed'].should eq options_component_groups_create['collapsed']
-    # end
+    ## Test CachetComponents.groups_create
+    options_component_groups_create = {}
+    options_component_groups_create['name'] = 'ComponentGroupTest-' + SecureRandom.hex(5)
+    options_component_groups_create['order'] = 2
+    options_component_groups_create['collapsed'] = 0
+    components_groups_create_response = CachetComponents.groups_create(options_component_groups_create)
+    it 'should return created component group with id' do
+      components_groups_create_response.should_not be nil
+      components_groups_create_response['data']['id'].should_not be nil
+      components_groups_create_response['data']['name'].should eq options_component_groups_create['name']
+      components_groups_create_response['data']['collapsed'].should eq false
+    end
 
     ## Test CachetComponents.groups_list
     components_groups_list_response = CachetComponents.groups_list
@@ -75,28 +75,29 @@ describe CachetComponents do
     options_component_update['id'] = components_create_response['data']['id']
     options_component_update['name'] = components_create_response['data']['name']
     options_component_update['status'] = CachetClient::STATUS_PARTIAL_OUTAGE
-    # options_component_update['group_id'] = components_groups_create_response['data']['id']
+    options_component_update['group_id'] = components_groups_create_response['data']['id']
     components_update_response = CachetComponents.update(options_component_update)
     it 'should return updated component with id and updated status' do
       components_update_response.should_not be nil
       components_update_response['data']['id'].should_not be nil
       components_update_response['data']['name'].should eq components_create_response['data']['name']
       components_update_response['data']['status'].should eq CachetClient::STATUS_PARTIAL_OUTAGE
-      # components_update_response['data']['group_id'].should eq components_groups_create_response['data']['id']
+      components_update_response['data']['group_id'].should eq components_groups_create_response['data']['id']
     end
 
-    # ## Test CachetComponents.groups_update
-    # options_component_groups_update = {}
-    # options_component_groups_update['id'] = components_groups_create_response['data']['id']
-    # options_component_groups_update['name'] = components_groups_create_response['data']['name']
-    # options_component_groups_update['order'] = '1'
-    # components_groups_update_response = CachetComponents.groups_update(options_component_groups_update)
-    # it 'should update and return updates for created component group with id' do
-    #   components_groups_update_response.should_not be nil
-    #   components_groups_update_response['data']['id'].should_not be nil
-    #   components_groups_update_response['data']['name'].should eq components_groups_create_response['data']['name']
-    #   components_groups_update_response['data']['order'].should eq options_component_groups_update['order']
-    # end
+    ## Test CachetComponents.groups_update
+    options_component_groups_update = {}
+    options_component_groups_update['id'] = components_groups_create_response['data']['id']
+    options_component_groups_update['name'] = components_groups_create_response['data']['name']
+    options_component_groups_update['order'] = 1
+    options_component_groups_update['collapsed'] = 0
+    components_groups_update_response = CachetComponents.groups_update(options_component_groups_update)
+    it 'should update and return updates for created component group with id' do
+      components_groups_update_response.should_not be nil
+      components_groups_update_response['data']['id'].should_not be nil
+      components_groups_update_response['data']['name'].should eq components_groups_create_response['data']['name']
+      components_groups_update_response['data']['order'].should eq options_component_groups_update['order']
+    end
 
     ## Test CachetComponents.delete
     options_components_delete = {}
@@ -106,12 +107,12 @@ describe CachetComponents do
       components_delete_response['data'].should eq 204
     end
 
-    # ## Test CachetComponents.groups_delete
-    # options_components_groups_delete = {}
-    # options_components_groups_delete['id'] = components_groups_create_response['data']['id']
-    # components_groups_delete_response = CachetComponents.groups_delete(options_components_groups_delete)
-    # it 'should delete previously created groups and return a 204' do
-    #   components_groups_delete_response['data'].should eq 204
-    # end
+    ## Test CachetComponents.groups_delete
+    options_components_groups_delete = {}
+    options_components_groups_delete['id'] = components_groups_create_response['data']['id']
+    components_groups_delete_response = CachetComponents.groups_delete(options_components_groups_delete)
+    it 'should delete previously created groups and return a 204' do
+      components_groups_delete_response['data'].should eq 204
+    end
   end
 end

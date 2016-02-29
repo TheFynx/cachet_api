@@ -75,7 +75,7 @@ class CachetClient
     elsif response.code == 204
       return { 'data' => code }
     else
-      fail Net::HTTPError, response.inspect
+      return response
     end
   end
 
@@ -187,7 +187,7 @@ class CachetComponents < CachetClient
   #
   # @option options [string] :name **Required** Component group name
   # @option options [int] :order Numeric order of the component group
-  # @option options [boolean] :collapsed Whether to collapse the group by default
+  # @option options [int] :collapsed Whether to collapse the group by default
   # @return object
 
   def groups_create(options)
@@ -207,7 +207,7 @@ class CachetComponents < CachetClient
 
   def groups_update(options)
     request method:  :put,
-            url:     @base_url + 'components/groups',
+            url:     @base_url + 'components/groups/' + options['id'].to_s,
             payload: options
   end
 

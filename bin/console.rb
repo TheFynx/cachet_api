@@ -40,10 +40,9 @@ CachetSubscribers = CachetSubscribers.new(api, base_url)
 
 componentoptions = {}
 #componentoptions['id']      = '1'
-componentoptions['name']    = 'TestGroup'
-componentoptions['order']    = '0'
-componentoptions['collapsed']  = "true"
-#componentoptions['status']  = '1'
+componentoptions['name'] = 'TestComponent'
+componentoptions['status'] = 1
+#componentoptions['collapsed'] = true
 
 incidentoptions = {}
 incidentoptions['id']      = '1'

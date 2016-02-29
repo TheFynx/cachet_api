@@ -25,4 +25,4 @@ end
 desc 'Common task'
 task all: [:test, :spec]
 
-task :default => :test
+task default: :test

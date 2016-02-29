@@ -73,7 +73,7 @@ class CachetClient
       body = JSON.parse(response.body)
       return body
     elsif response.code == 204
-      return code, 'Content Deleted'
+      return { 'data' => code }
     else
       fail Net::HTTPError, response.inspect
     end

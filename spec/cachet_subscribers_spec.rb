@@ -1,36 +1,50 @@
 require_relative '../lib/cachet'
 require 'rspec'
+require 'securerandom'
 
 # Subscribers
 describe CachetSubscribers do
   let(:api_key) { '9yMHsdioQosnyVK4iCVR' }
   let(:base_url) { 'https://demo.cachethq.io/api/v1/' }
 
-  ## Create new incident client
+  ## Create new componet client
   let(:cachetsubscribers) { CachetSubscribers.new api_key, base_url }
   it 'should success' do
     api_key.should eq '9yMHsdioQosnyVK4iCVR'
     cachetsubscribers.should be_an_instance_of CachetSubscribers
   end
-  ## Create mock incident to test
-  let(:mock_subscribers) do
-    {
-      'id'            => 1,
-      'email'         => 'test@testing.com',
-      'verify_code'   => 'Cw8AqAzulLonity44tv2Ah88x9HgWQA2lgE84p0k3B',
-      'verified_at'   => '2016-02-29 16:46:26',
-      'created_at'    => '2016-02-29 16:46:19',
-      'updated_at'    => '2016-02-29 16:46:19',
-      'subscriptions' => []
-    }
-  end
-  ## Test CachetSubscribers.list
-  describe '#CachetSubscribers.list' do
-    let(:response) { return cachetsubscribers.list }
 
-    it 'should succesfully pull metric list' do
-      response.should_not be nil
-      response['data'][0]['id'].should_not be nil
+  describe 'CachetSubscribers' do
+    ## Test CachetSubscribers.create
+    let(:random_email) { 'test' + SecureRandom.urlsafe_base64 + '@testing.com' }
+    let(:options_subscribe_create) do
+      {
+        'email' => random_email,
+        'verify' => '0'
+      }
+    end
+    let(:subscribers_create_response) { cachetsubscribers.create(options_subscribe_create) }
+    it 'should return created subscriber with id' do
+      subscribers_create_response.should_not be nil
+      subscribers_create_response['data']['id'].should_not be nil
+    end
+
+    ## Test CachetSubscribers.list
+    let(:subscribers_list_response) { return cachetsubscribers.list }
+    it 'return subscriber list, assign to variable, and variable should return data' do
+      subscribers_list_response.should_not be nil
+      subscribers_list_response['data'][0]['id'].should_not be nil
+    end
+
+    ## Test CachetSubscribers.delete
+    let(:options_subscribe_delete) do
+      {
+        'id' => subscribers_list_response['data'][0]['id']
+      }
+    end
+    let(:subscribers_delete_response) { cachetsubscribers.delete options_subscribe_delete }
+    it 'should delete previously created subscriber and return a 204' do
+      subscribers_delete_response['data'].should eq 204
     end
   end
 end

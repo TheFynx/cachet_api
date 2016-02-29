@@ -51,7 +51,7 @@ metricoptions = {}
 metricoptions['id'] = '1'
 
 subscribeoptions = {}
-subscribeoptions['id'] = '1'
+subscribeoptions['id'] = '3'
 subscribeoptions['email']  = 'test@testing.com'
 subscribeoptions['verify'] = '0'
 

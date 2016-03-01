@@ -33,7 +33,7 @@ class CachetClient
   INCIDENT_INVESTIGATING = 1
   ##
   # Constant to utilize for Incident Status Identified
-  INCIDENT_IDENTIFIED = 3
+  INCIDENT_IDENTIFIED = 2
   ##
   # Constant to utilize for Incident Status Watching
   INCIDENT_WATCHING = 3
@@ -75,7 +75,7 @@ class CachetClient
     elsif response.code == 204
       return { 'data' => code }
     else
-      return response
+      fail Net::HTTPError, response.inspect
     end
   end
 

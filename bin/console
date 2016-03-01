@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require "bundler/setup"
-require "lib/cachet"
-
-require "irb"
-IRB.start

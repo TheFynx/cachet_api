@@ -6,8 +6,15 @@ rvm:
 - 2.1.8
 - 2.1.2
 script:
-  - bundle exec rake all
-  - bundle exec rake yard
+- bundle exec rake all
 addons:
-    code_climate:
-        repo_token: ddaffc1830a7f175bcca559e29619daee62aa145360e2dfbc9dd8e9ac5ce14fb
+  code_climate:
+    repo_token: ddaffc1830a7f175bcca559e29619daee62aa145360e2dfbc9dd8e9ac5ce14fb
+deploy:
+  provider: rubygems
+  api_key:
+    secure: ZhHcvZniDq4wF7lz0kRHfu53yXJIIobQtqgpAGO7QP6HW36t0aSBczWwDKdbWRtzsIVNPS/5ixuq99yYFUtCC1ewb2/FMKk+SPMbtvOVMni7PuT/EKak7Qphafcq3r2a2F1zvu7D2+Jpe4PHPk26piLReZcCkCHkF3eVY/ndYAasJ99JP8Othb7YTwcFUVRM4nJvSbFOr1AenzBPEAc7DokZ44qtzPbMvMYIpmOn0/uqtbHcQbUEwx2x25Tb1Ma30nXPsjRskFVzWFTKLerJE5Nho5XM7Vw/ReKflgzSX/KshBPdDCNfJ6DFN+zdaVG8CdAajVbdpYQjC6pezzcLBd32O/LFdS5v0v4JpPdts6XxS2yOHLCKUiMo23ibe7mrKTR3WfhvaNG9Lbi6gPOaD29/bx3S+k6HdWqaHrvEPbMR+GpCKDLYP1LrVO7MWacge47Jl57G/2Ml2XdWWowNfbNRfL/XEaGp5fGRlkiA7BcydGlChHWHvb92Vs6c4Vg0FgRgJALqMQIwiBzjhC53qRi2fw9Hxz4Uyo0A5YlG/vh6gQYjFtRnrYBnfveBY5WV3x6wKHsvUxonMKUrhCZF//6jJkbqu9annkIAWW1Mnw+dqptdgVElXQeyx/PxD06AmjEscO5KYS5L7LoYWxMt4ndI/uXHBDqJUoCmRF2uK20=
+  gem: cachet_api
+  on:
+    tags: true
+    repo: TheFynx/cachet_api

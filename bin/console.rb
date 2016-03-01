@@ -39,20 +39,16 @@ CachetMetrics = CachetMetrics.new(api, base_url)
 CachetSubscribers = CachetSubscribers.new(api, base_url)
 
 componentoptions = {}
-#componentoptions['id']      = '1'
-componentoptions['name'] = 'TestComponent'
 componentoptions['status'] = 1
-#componentoptions['collapsed'] = true
 
 incidentoptions = {}
-incidentoptions['id']      = '1'
-incidentoptions['status']  = '1'
+incidentoptions['id'] = 1
 
 metricoptions = {}
-metricoptions['id'] = '1'
+metricoptions['id'] = 1
 
 subscribeoptions = {}
-subscribeoptions['id'] = '3'
+subscribeoptions['id'] = 3
 subscribeoptions['email']  = 'test@testing.com'
 subscribeoptions['verify'] = '0'
 

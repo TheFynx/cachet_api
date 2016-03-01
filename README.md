@@ -84,7 +84,7 @@ delete/metrics/:id/points/:point_id | CachetMetrics.point_delete | Options (hash
 
 ### Subscribers
 
-Cachet API             | Ruby Library             | Options/Params
+Cachet API             | Ruby Library             | Options/Params (R) == Required
 :--------------------- | :----------------------- | :--------------------------------
 get/subscribers        | CachetSubscribers.list   | N/A                               |
 post/subscribers       | CachetSubscribers.create | Options (hash) : email(R), verify |

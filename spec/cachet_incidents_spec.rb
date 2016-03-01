@@ -22,7 +22,7 @@ describe CachetIncidents do
       incidents_create_response.should_not be nil
       incidents_create_response['data']['id'].should_not be nil
       incidents_create_response['data']['name'].should eq options_incident_create['name']
-      incidents_create_response['data']['status'].should eq CachetClient::INCIDENT_INVESTIGATING.to_s
+      incidents_create_response['data']['status'].should eq '1'
     end
 
     ## Test CachetIncidents.list
@@ -53,7 +53,7 @@ describe CachetIncidents do
       incidents_update_response.should_not be nil
       incidents_update_response['data']['id'].should_not be nil
       incidents_update_response['data']['name'].should eq incidents_create_response['data']['name']
-      incidents_update_response['data']['status'].should eq CachetClient::INCIDENT_WATCHING.to_s
+      incidents_update_response['data']['status'].should eq '3'
     end
 
     ## Test CachetIncidents.delete

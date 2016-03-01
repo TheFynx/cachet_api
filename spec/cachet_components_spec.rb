@@ -20,7 +20,7 @@ describe CachetComponents do
       components_create_response.should_not be nil
       components_create_response['data']['id'].should_not be nil
       components_create_response['data']['name'].should eq options_component_create['name']
-      components_create_response['data']['status'].should eq CachetClient::STATUS_OPERATIONAL
+      components_create_response['data']['status'].should eq 1
     end
 
     ## Test CachetComponents.list
@@ -81,7 +81,7 @@ describe CachetComponents do
       components_update_response.should_not be nil
       components_update_response['data']['id'].should_not be nil
       components_update_response['data']['name'].should eq components_create_response['data']['name']
-      components_update_response['data']['status'].should eq CachetClient::STATUS_PARTIAL_OUTAGE
+      components_update_response['data']['status'].should eq 3
       components_update_response['data']['group_id'].should eq components_groups_create_response['data']['id']
     end
 

@@ -50,7 +50,7 @@ describe CachetComponents do
       components_groups_create_response.should_not be nil
       components_groups_create_response['data']['id'].should_not be nil
       components_groups_create_response['data']['name'].should eq options_component_groups_create['name']
-      components_groups_create_response['data']['collapsed'].should eq false
+      components_groups_create_response['data']['collapsed'].should eq 0
     end
 
     ## Test CachetComponents.groups_list

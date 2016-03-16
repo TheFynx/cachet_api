@@ -27,6 +27,8 @@ $ gem install cachet_api
 ```ruby
 # Under your profile in Cachet, get your api_key from the API Token section. Base url is https://demo.cachethq.io/api/v1/ or https://cachet.yourdomain.com/api/v1/
 
+require 'cachet' # have an issue open to fix this, will force v2.0.0
+
 CachetClient = CachetClient.new(api_key, base_url)
 CachetComponents = CachetComponents.new(api_key, base_url)
 CachetIncidents = CachetIncidents.new(api_key, base_url)

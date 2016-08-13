@@ -51,7 +51,7 @@ get/ping   | CachetClient.ping | N/A            |
 
 Cachet API                   | Ruby Library                    | Options/Params (R) == Required
 :--------------------------- | :------------------------------ | :-------------------------------------------------------------------------------
-get/components               | CachetComponents.list           | N/A                                                                              |
+get/components               | CachetComponents.list           | Options (hash) : id, name, status, group_id, enabled                             |
 get/components/:id           | CachetComponents.list_id        | Options (hash) : id                                                              |
 post/components              | CachetComponents.create         | Options (hash) : name(R), status(R), description, link, order, group_id, enabled |
 put/components/:id           | CachetComponents.update         | Options (hash) : id(R), status(R), name(R), link, order, group_id, enabled       |
@@ -66,7 +66,7 @@ delete/components/groups/:id | CachetComponents.groups_delete  | Options (hash) 
 
 Cachet API           | Ruby Library            | Options/Params (R) == Required
 :------------------- | :---------------------- | :--------------------------------------------------------------------------------------------------
-get/incidents        | CachetIncidents.list    | N/A                                                                                                 |
+get/incidents        | CachetIncidents.list    | Options (hash) : id, component_id, name, status, visible                                            |
 get/incidents/:id    | CachetIncidents.list_id | Options (hash) : id                                                                                 |
 post/incidents       | CachetIncidents.create  | Options (hash) : name(R), message(R), status(R), visible(R), component_id, component_status, notify |
 put/incidents/:id    | CachetIncidents.update  | Options (hash) : id(R), name, message, status, visible, component_id, component_status, notify      |

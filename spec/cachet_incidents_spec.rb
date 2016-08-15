@@ -32,6 +32,13 @@ describe CachetIncidents do
       incidents_list_response['data'][0]['id'].should_not be nil
     end
 
+    ## Test CachetIncidents.list with options
+    incidents_list_response = CachetIncidents.list({status: CachetClient::INCIDENT_INVESTIGATING })
+    it 'should accept params and return incident list, assign to variable, and variable should return data' do
+      incidents_list_response.should_not be nil
+      incidents_list_response['data'][0]['id'].should_not be nil
+    end
+
     ## Test CachetIncidents.list_id
     options_incident_list_id = {}
     options_incident_list_id['id'] = incidents_create_response['data']['id']

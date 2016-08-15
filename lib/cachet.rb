@@ -66,7 +66,8 @@ class CachetClient
   # @return object
 
   def request(params)
-    response = RestClient::Request.execute(params.merge(headers: @headers))
+    headers = params[:headers] ? @headers.merge(params[:headers]) : @headers
+    response = RestClient::Request.execute(params.merge(headers: headers))
     code = response.code
 
     if response.code == 200
@@ -99,9 +100,10 @@ class CachetComponents < CachetClient
   #
   # @return object
 
-  def list
+  def list(options = nil)
     request method:  :get,
-            url:     @base_url + 'components'
+            url:     @base_url + 'components',
+            headers: {params: options}
   end
 
   ##
@@ -232,9 +234,10 @@ class CachetIncidents < CachetClient
   #
   # @return object
 
-  def list
+  def list(options = nil)
     request method:  :get,
-            url:     @base_url + 'incidents'
+            url:     @base_url + 'incidents',
+            headers: {params: options}
   end
 
   ##

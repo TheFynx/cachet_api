@@ -30,6 +30,13 @@ describe CachetComponents do
       components_list_response['data'][0]['id'].should_not be nil
     end
 
+    ## Test CachetComponents.list with options
+    components_list_response = CachetComponents.list(status: CachetClient::STATUS_OPERATIONAL)
+    it 'should accept params and return component list, assign to variable, and variable should return data' do
+      components_list_response.should_not be nil
+      components_list_response['data'][0]['id'].should_not be nil
+    end
+
     ## Test CachetComponents.list_id
     options_component_list_id = {}
     options_component_list_id['id'] = components_create_response['data']['id']

@@ -1,1 +1,1 @@
-relative_require 'cachet_api'
+require_relative 'cachet_api'

@@ -5,6 +5,10 @@ require 'cachet/rb/version'
 require 'rest-client'
 require 'uri'
 require 'json'
+require_relative 'cachet/components'
+require_relative 'cachet/incidents'
+require_relative 'cachet/metrics'
+require_relative 'cachet/subscribers'
 
 ###
 # Basic client to call to make calls into rest-client

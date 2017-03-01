@@ -4,10 +4,6 @@
 # Inherits CachetClient and handles all Incidents API Calls
 #
 class CachetIncidents < CachetClient
-  def initialize
-    super()
-  end
-
   ##
   # List all Incidents.
   #

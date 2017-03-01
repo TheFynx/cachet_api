@@ -8,7 +8,7 @@ describe CachetIncidents do
   base_url = 'https://demo.cachethq.io/api/v1/'
 
   ## Create new incidents client
-  CachetIncidents = CachetIncidents.new(api_key, base_url)
+  Incidents = CachetIncidents.new(api_key, base_url)
 
   describe '#CachetIncidents' do
     ## Test CachetIncidents.create
@@ -17,7 +17,7 @@ describe CachetIncidents do
     options_incident_create['message'] = 'Testing cachet_api gem'
     options_incident_create['status'] = CachetClient::INCIDENT_INVESTIGATING
     options_incident_create['visible'] = 1
-    incidents_create_response = CachetIncidents.create(options_incident_create)
+    incidents_create_response = Incidents.create(options_incident_create)
     it 'should return created incident with id' do
       incidents_create_response.should_not be nil
       incidents_create_response['data']['id'].should_not be nil
@@ -26,14 +26,14 @@ describe CachetIncidents do
     end
 
     ## Test CachetIncidents.list
-    incidents_list_response = CachetIncidents.list
+    incidents_list_response = Incidents.list
     it 'return incident list, assign to variable, and variable should return data' do
       incidents_list_response.should_not be nil
       incidents_list_response['data'][0]['id'].should_not be nil
     end
 
     ## Test CachetIncidents.list with options
-    incidents_list_response = CachetIncidents.list({status: CachetClient::INCIDENT_INVESTIGATING })
+    incidents_list_response = Incidents.list({status: CachetClient::INCIDENT_INVESTIGATING })
     it 'should accept params and return incident list, assign to variable, and variable should return data' do
       incidents_list_response.should_not be nil
       incidents_list_response['data'][0]['id'].should_not be nil
@@ -42,7 +42,7 @@ describe CachetIncidents do
     ## Test CachetIncidents.list_id
     options_incident_list_id = {}
     options_incident_list_id['id'] = incidents_create_response['data']['id']
-    incidents_list_id_response = CachetIncidents.list_id(options_incident_list_id)
+    incidents_list_id_response = Incidents.list_id(options_incident_list_id)
     it 'return incident list by id and variable match data to specific incident' do
       incidents_list_id_response.should_not be nil
       incidents_list_id_response['data']['id'].should eq incidents_create_response['data']['id']
@@ -55,7 +55,7 @@ describe CachetIncidents do
     options_incident_update['name'] = incidents_create_response['data']['name']
     options_incident_update['message'] = 'cachet_api gem test update!'
     options_incident_update['status'] = CachetClient::INCIDENT_WATCHING
-    incidents_update_response = CachetIncidents.update(options_incident_update)
+    incidents_update_response = Incidents.update(options_incident_update)
     it 'should return updated incident with id and updated status' do
       incidents_update_response.should_not be nil
       incidents_update_response['data']['id'].should_not be nil
@@ -66,7 +66,7 @@ describe CachetIncidents do
     ## Test CachetIncidents.delete
     options_incidents_delete = {}
     options_incidents_delete['id'] = incidents_create_response['data']['id']
-    incidents_delete_response = CachetIncidents.delete(options_incidents_delete)
+    incidents_delete_response = Incidents.delete(options_incidents_delete)
     it 'should delete previously created groups and return a 204' do
       incidents_delete_response['data'].should eq 204
     end

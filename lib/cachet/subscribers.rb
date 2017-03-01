@@ -4,10 +4,6 @@
 # Inherits CachetClient and handles all Subscribers API Calls
 #
 class CachetSubscribers < CachetClient
-  def initialize
-    super()
-  end
-  
   ##
   # List all Subscribers.
   #

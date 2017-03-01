@@ -4,10 +4,6 @@
 # Inherits CachetClient and handles all Components API Calls
 #
 class CachetComponents < CachetClient
-  def initialize
-    super()
-  end
-
   ##
   # List all Components.
   #

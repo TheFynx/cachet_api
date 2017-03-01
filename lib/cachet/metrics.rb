@@ -4,10 +4,6 @@
 # Inherits CachetClient and handles all Metrics API Calls
 #
 class CachetMetrics < CachetClient
-  def initialize
-    super()
-  end
-  
   ##
   # List all Metrics.
   #

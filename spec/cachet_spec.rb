@@ -7,7 +7,7 @@ describe CachetClient do
   base_url = 'https://demo.cachethq.io/api/v1/'
 
   ## Create new subscribers client
-  CachetClient = CachetClient.new(api_key, base_url)
+  Client = CachetClient.new(api_key, base_url)
 
   it 'should success' do
     api_key.should eq '9yMHsdioQosnyVK4iCVR'
@@ -15,7 +15,7 @@ describe CachetClient do
 
   # PING
   describe '#ping' do
-    response = CachetClient.ping
+    response = Client.ping
 
     it 'should return a PONG' do
       response.should_not be nil

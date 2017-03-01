@@ -56,7 +56,7 @@ class CachetActions < CachetClient
   end
 
   ##
-  # Delete a Action.
+  # Update a Action.
   #
   # @option options [int] :action **Required** Action ID
   # @option options [string] :name The name of the action
@@ -91,7 +91,7 @@ class CachetActions < CachetClient
   # @option options [date] :action **Required** The time of which the action instance was completed
   # @return object
 
-  def instance_list(options)
+  def instance_create(options)
     request method:  :post,
             url:     @base_url + 'actions/' + options['action'].to_s + '/instances',
             payload: options

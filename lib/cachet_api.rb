@@ -9,6 +9,7 @@ require_relative 'cachet/components'
 require_relative 'cachet/incidents'
 require_relative 'cachet/metrics'
 require_relative 'cachet/subscribers'
+# require_relative 'cachet/actions'
 
 ###
 # Basic client to call to make calls into rest-client

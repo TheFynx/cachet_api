@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.8'
-  spec.add_development_dependency 'rake', '~> 10.5'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.4'
   spec.add_dependency 'rest-client', '~> 1.8'
 end
